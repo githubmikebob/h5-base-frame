@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <!-- css -->
+  <% for (var css in htmlWebpackPlugin.files.css) { %>
+  <link href="<%=htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+  <% } %>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but website doesn't work properly without JavaScript
+      enabled. Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- <script>
+    // 获取 htmlWebpackPlugin 配置
+    var config = "<%= JSON.stringify(htmlWebpackPlugin) %>"
+    console.log(config)
+  </script> -->
+  <!-- built files will be auto injected -->
+  <% for (var i in htmlWebpackPlugin.files.js) { %>
+  <script type="text/javascript" src="<%=htmlWebpackPlugin.files.js[i] %>"></script>
+  <% } %>
+  <!-- CDN-引入样式 -->
+  <% for (var i in htmlWebpackPlugin.options.cdn.css) { %>
+  <link href="<%= htmlWebpackPlugin.options.cdn.css[i] %>" rel="stylesheet" />
+  <% } %>
+  <!-- CDN-引入js -->
+  <% for (var i in htmlWebpackPlugin.options.cdn.js) { %>
+  <script src="<%= htmlWebpackPlugin.options.cdn.js[i] %>"></script>
+  <% } %>
+</body>
+
+</html>

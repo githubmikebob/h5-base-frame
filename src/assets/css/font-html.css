@@ -1,0 +1,13 @@
+/* 
+自定义不同屏幕尺寸下面html 根字体大号，以便实现字体响应式
+你也可以在这里固定像素值，在media中的px不会被插件所转换
+*/
+/* @media screen  and (min-width:1200px){
+    html{
+        font-size: 14px;
+    }
+} */
+/* 由于我这里采用了postcss-px-to-viewport,设计稿一般为750px,我设置默认字体大小为16px*2=32px*/
+html{
+    font-size: 32px; 
+}
