@@ -7,18 +7,20 @@
     </van-nav-bar>
   </div>
 </template>
+
 <script>
-import { NavBar } from "vant";
+import { NavBar } from 'vant';
+
 export default {
-  name: "header-bar",
+  name: 'header-bar',
   props: {
     title: {
       type: String,
-      default: "标题"
+      default: '标题'
     }
   },
   data() {
-    return {};
+    return {}
   },
   computed: {},
   created() {},
@@ -30,7 +32,7 @@ export default {
       this.$router.go(-1);
     },
     onClickRight() {
-      this.$toast("按钮");
+      this.$toast('按钮');
     }
   },
   components: {

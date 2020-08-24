@@ -10,14 +10,17 @@
 
 <script>
 import HeaderBar from '@/components/Layout/HeaderBar'
+
 export default {
   props: {},
   data() {
     return {}
   },
   computed: {},
-  created() {},
-  mounted() {},
+  created() {
+  },
+  mounted() {
+  },
   watch: {},
   methods: {},
   components: {
@@ -27,6 +30,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.content {
-}
+  .content {
+  }
 </style>

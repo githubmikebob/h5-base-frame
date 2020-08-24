@@ -8,6 +8,14 @@ export function info(params) {
   })
 }
 
+export function menus(params) {
+  return request({
+    url: '/user/menus',
+    method: 'get',
+    params
+  })
+}
+
 export function login(data) {
   return request({
     url: '/user/login',

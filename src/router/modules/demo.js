@@ -7,22 +7,22 @@ const ListDemo = () => import('@/views/pages/ListDemo.vue');
 // }
 export default [
   {
-    path: 'WxTest',
+    path: '/WxTest',
     name: 'WxTest',
     meta: {
       title: '微信jssdk测试',
       // hideHeader: true,
-      isOpen: true,
+      // isOpen: true,
     },
     component: WxTest,
   },
   {
-    path: 'ListDemo',
+    path: '/ListDemo',
     name: 'ListDemo',
     meta: {
       title: '列表 demo',
       hideHeader: true,
-      isOpen: true,
+      // isOpen: true,
     },
     component: ListDemo,
   },

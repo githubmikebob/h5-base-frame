@@ -9,14 +9,15 @@
   ></el-amap>
 </template>
 
-<script >
+<script>
 // NPM 方式
-import Vue from "vue";
-import VueAMap, { AMapManager } from "vue-amap";
+import Vue from 'vue';
+import VueAMap, { AMapManager } from 'vue-amap';
+
 VueAMap.initAMapApiLoader({
-  key: "599dfe6bbe92b35d34d4e3d3f40aac6b",
-  plugin: ["AMap.Scale", "AMap.OverView", "AMap.ToolBar", "AMap.MapType"],
-  v: "2.0"
+  key: '599dfe6bbe92b35d34d4e3d3f40aac6b',
+  plugin: ['AMap.Scale', 'AMap.OverView', 'AMap.ToolBar', 'AMap.MapType'],
+  v: '2.0'
 });
 Vue.use(VueAMap);
 

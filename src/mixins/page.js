@@ -1,4 +1,4 @@
-import { deepClone } from "@/utils/index";
+import { deepClone } from '@/utils/index';
 
 // 提供给混合初始化搜索对象
 let tempSearch = {};
@@ -53,7 +53,7 @@ export default {
       await this._getList();
       this.loading = false;
       // 判断是否全部加载完成
-      if (this.list.length == this.total) {
+      if (this.list.length === this.total) {
         this.finished = true;
       }
     },
@@ -61,14 +61,14 @@ export default {
      * 上拉加载
      */
     async _onLoad() {
-      console.log("上拉加载");
+      console.log('上拉加载');
       this._getListFactory();
     },
     /**
      * 下拉刷新
      */
     async _onRefresh() {
-      console.log("下拉刷新");
+      console.log('下拉刷新');
       // 初始化数据
       this._initPageData();
       this._resetSearch();

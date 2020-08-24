@@ -1,7 +1,7 @@
 .DS_Store
 node_modules
-#记得解除忽略dist目录
 /dist
+package-lock.json
 
 # local env files
 .env.local

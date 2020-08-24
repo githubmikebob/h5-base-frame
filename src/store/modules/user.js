@@ -1,40 +1,41 @@
-// import { Toast } from 'vant'
 import router from '@/router'
-import {
-  getToken,
-  setToken,
-  removeToken,
-  setUserInfo,
-  removeUserInfo
-} from '@/utils/auth'
+import store from '@/store'
+import { GetLocal, SetLocal, RemoveLocal } from '@/utils/storage'
 import * as $userApi from '@/api/user'
-import { getUserInfo } from '../../utils/auth'
 
 // mutations-types
 const SET_TOKEN = 'SET_TOKEN' // 登录
 const SET_USER_INFO = 'SET_USER_INFO' // 获取用户信息
+const SET_MENUS = 'SET_MENUS' // 获取用户路由权限
 const LOGOUT = 'LOGOUT' // 退出登录、清除用户数据
 
 export default {
   namespaced: true,
   state: {
-    token: getToken() || '',
-    user: getUserInfo() || {}
+    token: GetLocal('', 'TOKEN_KEY') || '',
+    user: GetLocal('', 'USER_INFO') || {},
+    menus: GetLocal('', 'MENUS') || []
   },
   mutations: {
     [SET_TOKEN](state, data) {
       state.token = data
-      setToken(data)
+      SetLocal('', 'TOKEN_KEY', data, 0)
     },
     [SET_USER_INFO](state, userData = {}) {
       state.user = userData
-      setUserInfo(userData)
+      SetLocal('', 'USER_INFO', userData, 0)
+    },
+    [SET_MENUS](state, menus = []) {
+      state.menus = menus
+      SetLocal('', 'MENUS', menus, 0)
     },
     [LOGOUT](state) {
       state.user = {}
       state.token = null
-      removeToken()
-      removeUserInfo()
+      state.menus = []
+      RemoveLocal('', 'TOKEN_KEY')
+      RemoveLocal('', 'USER_INFO')
+      RemoveLocal('', 'MENUS')
       router.replace('/login')
     }
   },
@@ -44,8 +45,11 @@ export default {
         try {
           let resultLogin = await $userApi.login(data)
           let resultInfo = await $userApi.info()
+          let resultMenus = await $userApi.menus()
+          await store.dispatch('router/setRouters', resultMenus.data)
           commit(SET_TOKEN, resultLogin.data.token)
           commit(SET_USER_INFO, resultInfo.data)
+          commit(SET_MENUS, resultMenus.data)
           reslove()
         } catch (error) {
           // Toast({
@@ -64,6 +68,9 @@ export default {
   getters: {
     token(state) {
       return state.token
+    },
+    menus(state) {
+      return state.menus
     },
     user(state) {
       return state.user

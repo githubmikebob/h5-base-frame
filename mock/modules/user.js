@@ -22,5 +22,14 @@ export default [
         age: 22
       }
     }
+  },
+  {
+    url: '/user/menus',
+    type: 'get',
+    response: {
+      code: 200,
+      msg: 'success',
+      data: ['WxTest']
+    }
   }
 ]

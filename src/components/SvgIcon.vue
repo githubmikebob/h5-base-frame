@@ -6,7 +6,7 @@
     v-on="$listeners"
   />
   <svg v-else :class="svgClass" aria-hidden="true" v-on="$listeners">
-    <use :xlink:href="iconName" />
+    <use :xlink:href="iconName"/>
   </svg>
 </template>
 
@@ -28,8 +28,8 @@ export default {
   },
   computed: {
     /**
-     * 是否是外部的资源 如 https://.....
-     */
+			 * 是否是外部的资源 如 https://.....
+			 */
     isExternal() {
       return isExternal(this.iconClass)
     },
@@ -54,17 +54,17 @@ export default {
 </script>
 
 <style scoped>
-.svg-icon {
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.15em;
-  fill: currentColor;
-  overflow: hidden;
-}
+  .svg-icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+  }
 
-.svg-external-icon {
-  background-color: currentColor;
-  mask-size: cover !important;
-  display: inline-block;
-}
+  .svg-external-icon {
+    background-color: currentColor;
+    mask-size: cover !important;
+    display: inline-block;
+  }
 </style>

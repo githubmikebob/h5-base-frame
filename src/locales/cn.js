@@ -1,15 +1,16 @@
 import { transformApp, transformDistrict, transformCommon, transformUnit, we_chat } from './cn/app.js'
 import { transformRegister, transformLogin } from './cn/login.js'
-import {description, required, success, tip, unique, message, error, transformButton, status} from './cn/message'
-import {transformOrg, transformUpload, transformApply, transformInvite} from './cn/org'
+import { description, required, success, tip, unique, message, error, transformButton, status } from './cn/message'
+import { transformOrg, transformUpload, transformApply, transformInvite } from './cn/org'
 import { language, menu } from './cn/menu'
-import {transformCar, customer, extention, feedback, Mine, shop, wallet, member} from './cn/customer'
+import { transformCar, customer, extention, feedback, Mine, shop, wallet, member } from './cn/customer'
 import operation from './cn/button'
 import { coupon, transformShare, transformShareUrl, activity } from './cn/share'
-import {transformMall, transformOrder, transformPay, transformSecKill, transformGood} from './cn/mall'
+import { transformMall, transformOrder, transformPay, transformSecKill, transformGood } from './cn/mall'
 import game from './cn/game'
-import {card_order, meal, card} from './cn/card'
-import {transformReservation} from './cn/reservation'
+import { card_order, meal, card } from './cn/card'
+import { transformReservation } from './cn/reservation'
+
 export default {
   we_chat: we_chat,
   app: transformApp,

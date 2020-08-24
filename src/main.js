@@ -34,6 +34,9 @@ if (process.env.VUE_APP_MODE === 'mock') {
   console.log('本地mock数据已导入');
 }
 
+// 若是没有开启Devtools工具，在开发环境中开启，在生产环境中关闭
+Vue.config.devtools = (process.env.NODE_ENV === 'development')
+
 // 打印当前运行模式
 console.log('当前运行模式为:', process.env);
 

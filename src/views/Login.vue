@@ -20,7 +20,7 @@
         @click-right-icon="$toast('question')"
       />
 
-      <van-field v-model="password" type="password" label="密码" placeholder="请输入密码" required />
+      <van-field v-model="password" type="password" label="密码" placeholder="请输入密码" required/>
     </van-cell-group>
     <van-cell-group>
       <van-field v-model="sms" center clearable label="短信验证码" placeholder="请输入短信验证码">
@@ -31,13 +31,14 @@
       color="linear-gradient(to right, #4bb0ff, #6149f6)"
       size="large"
       @click="handleLogin"
-    >登录</van-button>
+    >登录
+    </van-button>
   </div>
 </template>
 
 <script>
 // components
-import { Cell, CellGroup, Field, Image } from "vant";
+import { Cell, CellGroup, Field, Image } from 'vant';
 
 export default {
   props: {},
@@ -49,8 +50,10 @@ export default {
     };
   },
   computed: {},
-  created() {},
-  mounted() {},
+  created() {
+  },
+  mounted() {
+  },
   watch: {},
   methods: {
     async handleLogin() {
@@ -60,14 +63,14 @@ export default {
           password: this.password,
           sms: this.sms
         };
-        await this.$store.dispatch("user/login", data);
+        await this.$store.dispatch('user/login', data);
         let self = this;
         this.$toast({
-          message: "登录成功",
-          position: "middle",
+          message: '登录成功',
+          position: 'middle',
           duration: 1500,
           onClose() {
-            self.$router.replace("/");
+            self.$router.replace('/');
           }
         });
       } catch (error) {
@@ -86,7 +89,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.page {
-  padding: 10px 15px;
-}
+  .page {
+    padding: 10px 15px;
+  }
 </style>

@@ -7,12 +7,12 @@
 <script>
 export default {
   props: {},
-  data () {
+  data() {
     return {}
   },
   computed: {},
-  created () { },
-  mounted () { },
+  created() { },
+  mounted() { },
   watch: {},
   methods: {},
   components: {}

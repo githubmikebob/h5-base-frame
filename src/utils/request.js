@@ -4,8 +4,8 @@
  */
 import axios from 'axios'
 import { Toast } from 'vant'
-// import store from '@/store'
-import { getToken } from '@/utils/auth'
+import store from '@/store'
+import {GetLocal} from '@/utils/storage'
 // import configSite from '_conf' // 站点配置
 
 // create an axios instance
@@ -22,7 +22,7 @@ console.log(process.env.VUE_APP_API_PREFIX)
 service.interceptors.request.use(
   config => {
     // 获取token
-    const token = getToken()
+    const token = store.state.user.token || GetLocal('', 'TOKEN_KEY')
     token && (config.headers.Authorization = token)
     return config
   },

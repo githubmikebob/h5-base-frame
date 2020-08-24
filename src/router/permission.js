@@ -1,27 +1,35 @@
-import router from '@/router'
-// import { Notify } from 'vant'
-import { getToken } from '@/utils/auth'
+import router  from '@/router'
+import store from '@/store'
+import { GetLocal, ResetSession } from '@/utils/storage'
+
+// const WHITE_LIST = ['/login', '/WxLogin']
 
 router.beforeEach(async (to, from, next) => {
   // 设置页面标题
   document.title = to.meta.title || require('../../config/index').title
-
+  // console.log(to)
   // 获取token
-  const hasToken = getToken()
+  const hasToken = GetLocal('', 'TOKEN_KEY') || store.state.user.token
   if (hasToken) {
     if (to.path === '/login') {
       // 已经登录，跳转到首页
       next({ path: '/' })
     } else {
-      next()
+      ResetSession('vuex', 'addRouters', []) // 该框架做了vuex持久缓存，需清除
+      let addR = store.state.router.addRouters
+      if (addR.length > 0) {
+        next()
+      } else {
+        let menus = GetLocal('', 'MENUS')
+        await store.dispatch('router/setRouters', menus)
+        next({ ...to, replace: true })
+      }
     }
   } else {
-    /* has no token */
+    // 不需要验证token的路由
     if (to.meta.isOpen) {
-      // 开放页面，无需验证
       next()
     } else {
-      // other pages that do not have permission to access are redirected to the login page.
       next(`/login?redirect=${to.path}`)
     }
   }

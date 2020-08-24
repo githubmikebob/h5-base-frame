@@ -92,7 +92,6 @@ npm run build 生产模式
     |   |   |-- modules
     |   |       |-- user.js
     |   |-- utils
-    |   |   |-- auth.js         本地权限存储封装
     |   |   |-- components.js   全局组件注册
     |   |   |-- index.js        常用工具
     |   |   |-- jssdk.js        jssdk commonjs

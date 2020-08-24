@@ -24,16 +24,16 @@
 </template>
 
 <script>
-import pageMixin from "@/utils/mixins/page";
+import pageMixin from '@/mixins/page';
 
-import { List, Cell, PullRefresh, Search } from "vant";
+import { List, Cell, PullRefresh, Search } from 'vant';
 export default {
   mixins: [pageMixin],
   // 数据列表
   data() {
     return {
       list: [],
-      search: { text: "", obj: { a: 1 } },
+      search: { text: '', obj: { a: 1 }},
     };
   },
   components: {
@@ -72,8 +72,8 @@ export default {
           ) {
             arr.push({
               id: i,
-              title: "【新增" + i + "】 标题",
-              content: "搜索对象为" + JSON.stringify(params.search),
+              title: '【新增' + i + '】 标题',
+              content: '搜索对象为' + JSON.stringify(params.search),
             });
           }
           res({

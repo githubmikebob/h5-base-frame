@@ -2,11 +2,11 @@
   <div class="home">
     <p style="text-align: center;">vue-vant-base</p>
     <div>
-      <img src="@/assets/logo.png" width="150" height="150" alt />
+      <img src="@/assets/logo.png" width="150" height="150" alt/>
     </div>
     <p class="title">vue移动端H5快速开发架构</p>
     <van-row type="flex" justify="center">
-      <van-image round width="20vw" height="20vw" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+      <van-image round width="20vw" height="20vw" src="https://img.yzcdn.cn/vant/cat.jpeg"/>
     </van-row>
     <van-row type="flex" justify="center">
       <p style="margin:10px">欢迎您,{{ $store.state.user.user.name }}</p>
@@ -14,10 +14,10 @@
     <m-panel title="图标">
       <van-row type="flex" justify="center" :gutter="2">
         <van-col>
-          <van-icon size="30" name="chat-o" />
+          <van-icon size="30" name="chat-o"/>
         </van-col>
         <van-col>
-          <van-icon size="30" name="https://b.yzcdn.cn/vant/icon-demo-1126.png" />
+          <van-icon size="30" name="https://b.yzcdn.cn/vant/icon-demo-1126.png"/>
         </van-col>
       </van-row>
     </m-panel>
@@ -70,10 +70,11 @@
 
 <script>
 // @ is an alias to /src
-import draggable from "vuedraggable";
-import { formatArrToFormData } from "@/utils";
+import draggable from 'vuedraggable';
+import { formatArrToFormData } from '@/utils';
+
 export default {
-  name: "home",
+  name: 'home',
   components: {
     draggable
   },
@@ -83,14 +84,16 @@ export default {
       time: 30 * 60 * 60 * 1000,
       value: 50,
       myArray: [
-        { name: "1号彩笔", id: 1 },
-        { name: "2号彩笔", id: 2 },
-        { name: "3号彩笔", id: 3 },
-        { name: "4号彩笔", id: 4 },
-        { name: "5号彩笔", id: 5 },
-        { name: "6号彩笔", id: 6 }
+        { name: '1号彩笔', id: 1 },
+        { name: '2号彩笔', id: 2 },
+        { name: '3号彩笔', id: 3 },
+        { name: '4号彩笔', id: 4 },
+        { name: '5号彩笔', id: 5 },
+        { name: '6号彩笔', id: 6 }
       ]
     };
+  },
+  created() {
   },
   methods: {
     onEndCallback(evt) {
@@ -98,29 +101,31 @@ export default {
       console.log(this.myArray);
     },
     handleLogOut() {
-      this.$store.dispatch("user/logout");
+      this.$store.dispatch('user/logout');
     },
     uploadImage() {
       const formData = new FormData();
       const fileList = this.fileList.map(item => item.file);
-      formatArrToFormData(formData, "images", fileList);
+      formatArrToFormData(formData, 'images', fileList);
     }
   }
 };
 </script>
 <style lang="scss" scoped>
-.home {
-  line-height: 80px;
-  text-align: center;
-  padding: 5px 10px;
-}
-.logo {
-  width: 200px;
-  height: 200px;
-}
-.theme {
-  text-align: center;
-  color: $theme;
-  margin: 10px 0px;
-}
+  .home {
+    line-height: 80px;
+    text-align: center;
+    padding: 5px 10px;
+  }
+
+  .logo {
+    width: 200px;
+    height: 200px;
+  }
+
+  .theme {
+    text-align: center;
+    color: $theme;
+    margin: 10px 0px;
+  }
 </style>
