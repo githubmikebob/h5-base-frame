@@ -1,5 +1,5 @@
-const WxTest = () => import('@/views/pages/WxTest.vue');
-const ListDemo = () => import('@/views/pages/ListDemo.vue');
+const WxTest = () => import('@/views/demo/WxTest.vue');
+const ListDemo = () => import('@/views/demo/ListDemo.vue');
 
 // 注意
 // meta: {

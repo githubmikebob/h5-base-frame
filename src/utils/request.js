@@ -3,9 +3,10 @@
  * @author JJ
  */
 import axios from 'axios'
+import qs from 'qs'
 import { Toast } from 'vant'
 import store from '@/store'
-import {GetLocal} from '@/utils/storage'
+import { GetLocal } from '@/utils/storage'
 // import configSite from '_conf' // 站点配置
 
 // create an axios instance
@@ -21,8 +22,12 @@ console.log(process.env.VUE_APP_API_PREFIX)
  */
 service.interceptors.request.use(
   config => {
+    config.headers['Accept'] = 'application/json'
+    // config.headers['Content-Type'] = 'text/plain'
+    config.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
+    if (config.method === 'post') config.data = qs.stringify(config.data)
     // 获取token
-    const token = store.state.user.token || GetLocal('', 'TOKEN_KEY')
+    const token = store.state.user.token || GetLocal('', 'accessToken')
     token && (config.headers.Authorization = token)
     return config
   },

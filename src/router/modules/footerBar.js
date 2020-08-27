@@ -1,7 +1,7 @@
 // BottomBar
-const Home = () => import('@/views/pages/Home.vue');
-const PersonCenter = () => import('@/views/pages/PersonCenter.vue');
-const MapDemo = () => import('@/views/pages/MapDemo.vue');
+const Home = () => import('@/views/demo/Home.vue');
+const PersonCenter = () => import('@/views/demo/PersonCenter.vue');
+const MapDemo = () => import('@/views/demo/MapDemo.vue');
 
 export default [
   {

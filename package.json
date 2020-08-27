@@ -42,6 +42,7 @@
     "mockjs": "^1.1.0",
     "postcss-plugin-px2rem": "^0.8.1",
     "postcss-px-to-viewport": "^1.1.1",
+    "qs": "^6.9.4",
     "sass": "^1.26.3",
     "sass-loader": "^8.0.2",
     "svg-sprite-loader": "^4.2.1",

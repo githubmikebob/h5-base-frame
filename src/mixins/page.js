@@ -1,4 +1,4 @@
-import { deepClone } from '@/utils/index';
+import { deepClone } from '@/utils/global';
 
 // 提供给混合初始化搜索对象
 let tempSearch = {};

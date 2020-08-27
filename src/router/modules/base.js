@@ -3,7 +3,7 @@ import footBarRouter from './footerBar';
 // layout
 import BottomBar from '@/components/Layout/BottomView.vue';
 // common
-const WxLogin = () => import('@/views/WxLogin.vue');
+const WxLogin = () => import('@/views/demo/WxLogin.vue');
 // ruleRouter
 
 // 注意
@@ -28,7 +28,7 @@ const baseRouter = [
     // route level code-splitting 路由级代码拆分
     // this generates a separate chunk (about.[hash].js) for this route 这将为此路由生成一个单独的块（about.[hash].js）
     // which is lazy-loaded when the route is visited. 当访问路由时延迟加载。
-    component: () => import(/* webpackChunkName: "login" */ '@/views/Login.vue'),
+    component: () => import(/* webpackChunkName: "login" */ '@/views/demo/Login.vue'),
   },
   {
     path: '/WxLogin',

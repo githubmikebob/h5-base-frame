@@ -9,7 +9,7 @@ router.beforeEach(async (to, from, next) => {
   document.title = to.meta.title || require('../../config/index').title
   // console.log(to)
   // 获取token
-  const hasToken = GetLocal('', 'TOKEN_KEY') || store.state.user.token
+  const hasToken = GetLocal('', 'accessToken') || store.state.user.token
   if (hasToken) {
     if (to.path === '/login') {
       // 已经登录，跳转到首页
@@ -20,7 +20,7 @@ router.beforeEach(async (to, from, next) => {
       if (addR.length > 0) {
         next()
       } else {
-        let menus = GetLocal('', 'MENUS')
+        let menus = GetLocal('', 'menus')
         await store.dispatch('router/setRouters', menus)
         next({ ...to, replace: true })
       }

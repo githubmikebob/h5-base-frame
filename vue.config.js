@@ -28,11 +28,13 @@ module.exports = {
 	// webpack-dev-server 相关配置
 	devServer: {
 		// 设置主机地址
-		host: "0.0.0.0",
+		host: "testwx.softkgj.com",
 		// 设置默认端口
-		port: 8088,
+		port: 80,
 		// 禁用host验证
 		disableHostCheck: true,
+		// 是否开启https
+		// https: true,
 		// 设置代理
 		proxy: {
 			"/api": {
@@ -40,7 +42,8 @@ module.exports = {
 				// 开发环境
 				// target: "http://127.0.0.1:7001/api", // 后端测试api地址
 				// target: 'http://rap2.taobao.org:38080/app/mock/261254', // 记得删除这行
-				target: '',
+				target: 'https://apitest.softkgj.com',
+				secure: false, // false为http访问，true为https访问
 				// 如果要代理 webSockets
 				ws: false,
 				// 将主机标头的原点更改为目标URL(设置跨域)

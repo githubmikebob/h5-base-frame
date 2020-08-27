@@ -18,7 +18,7 @@
 			}
 		} );
 		window.addEventListener( 'test', null, opts );
-	} catch( e ) {
+	} catch(e) {
 
 	}
 
@@ -29,21 +29,21 @@
 
 		// Allow zooming
 		var zoom = window.innerWidth / window.document.documentElement.clientWidth;
-		if( evt.touches.length > 1 || zoom !== 1 ) {
+		if (evt.touches.length > 1 || zoom !== 1) {
 			return;
 		}
 
 		// Check all parent elements for scrollability
-		while( el !== document.body && el !== document ) {
+		while(el !== document.body && el !== document) {
 			// Get some style properties
 			var style = window.getComputedStyle( el );
-			if( !style ) {
+			if ( !style) {
 				// If we've encountered an element we can't compute the style for, get out
 				break;
 			}
 
 			// Ignore range input element
-			if( el.nodeName === 'INPUT' && el.getAttribute( 'type' ) === 'range' ) {
+			if (el.nodeName === 'INPUT' && el.getAttribute( 'type' ) === 'range') {
 				return;
 			}
 
@@ -56,7 +56,7 @@
 			var canScroll = el.scrollHeight > el.offsetHeight;
 
 
-			if( isScrollable && canScroll ) {
+			if (isScrollable && canScroll) {
 				// Get the current Y position of the touch
 				var curY = evt.touches ? evt.touches[ 0 ].screenY : evt.screenY;
 
@@ -66,7 +66,7 @@
 				var isAtBottom = ( startY >= curY && el.scrollHeight - el.scrollTop === height );
 
 				// Stop a bounce bug when at the bottom or top of the scrollable element
-				if( isAtTop || isAtBottom ) {
+				if (isAtTop || isAtBottom) {
 					evt.preventDefault();
 				}
 
@@ -114,7 +114,7 @@
 	var scrollSupport = 'getComputedStyle' in window && window.getComputedStyle( testDiv )[ '-webkit-overflow-scrolling' ] === 'touch';
 	document.documentElement.removeChild( testDiv );
 
-	if( scrollSupport ) {
+	if (scrollSupport) {
 		enable();
 	}
 
@@ -125,11 +125,11 @@
 		isEnabled: isEnabled
 	};
 
-	if( typeof module !== 'undefined' && module.exports ) {
+	if (typeof module !== 'undefined' && module.exports) {
 		// Node.js Support
 		module.exports = iNoBounce;
 	}
-	if( typeof global.define === 'function' ) {
+	if (typeof global.define === 'function') {
 		// AMD Support
 		( function( define ) {
 			define( 'iNoBounce', [], function() {

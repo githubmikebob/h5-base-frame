@@ -33,6 +33,13 @@
       @click="handleLogin"
     >登录
     </van-button>
+    <div style="margin: 10px 0 0 0;"></div>
+    <van-button
+      color="linear-gradient(to right, #4bb0ff, #6149f6)"
+      size="large"
+      @click="handleWxLogin"
+    >微信登录
+    </van-button>
   </div>
 </template>
 
@@ -77,6 +84,9 @@ export default {
         this.$toast(error.message);
         console.error(error);
       }
+    },
+    async handleWxLogin() {
+      await this.$store.dispatch('user/wxLogin')
     }
   },
   components: {

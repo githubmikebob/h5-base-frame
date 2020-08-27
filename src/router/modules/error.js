@@ -1,5 +1,5 @@
-const page401 = () => import('@/views/401.vue');
-const page404 = () => import('@/views/404.vue');
+const page401 = () => import('@/views/demo/401.vue');
+const page404 = () => import('@/views/demo/404.vue');
 
 export default [
   {

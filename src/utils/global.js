@@ -1,4 +1,5 @@
 import { setTimeout } from 'core-js'
+import store from '@/store'
 
 /**
  * 常用工具
@@ -79,6 +80,16 @@ export const deepClone = obj => {
   }
   return result
 }
+
+/**
+ * 数据深拷贝
+ * @param obj
+ * @returns {any}
+ */
+export const deepCopy = obj => {
+  return JSON.parse(JSON.stringify(obj))
+}
+
 /**
  * 函数节流
  * @param {*} fn
@@ -156,3 +167,32 @@ export const formatArrToFormData = (formData, key, arr) => {
     // console.log(formData.get(`${key}[${index}]`));
   });
 };
+
+/**
+ * 获取地址栏url？后面参数的值
+ * @param {string} key
+ * @returns {string}
+ */
+export function getUrlKey(key) {
+  let z = decodeURIComponent((new RegExp('[?|&]' + key + '=([^&;]+?)(&|#|;|$)').exec(location.href) || [null, ''])[1].replace(/\+/g, '%20')) || null
+  // if (name === 'id' && z) SetLocal('', 'appid', z)
+  return z
+}
+
+/**
+ * 获取微信授权页面的code
+ * @param {string} appId
+ * @returns {string}
+ */
+export function getWxCode(appId = store.state.user.appId) {
+  let code = getUrlKey('code')
+  if (!code) {
+    let state = 123
+    let redirectUrl = window.location.href
+    let Url = encodeURIComponent(redirectUrl)
+    window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appId}&redirect_uri=${Url}&response_type=code&scope=snsapi_userinfo&state=${state}#wechat_redirect`
+  } else {
+    return code
+  }
+}
+

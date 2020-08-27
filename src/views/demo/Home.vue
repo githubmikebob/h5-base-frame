@@ -9,7 +9,7 @@
       <van-image round width="20vw" height="20vw" src="https://img.yzcdn.cn/vant/cat.jpeg"/>
     </van-row>
     <van-row type="flex" justify="center">
-      <p style="margin:10px">欢迎您,{{ $store.state.user.user.name }}</p>
+      <p style="margin:10px">欢迎您,{{ $store.state.user.userInfo.name }}</p>
     </van-row>
     <m-panel title="图标">
       <van-row type="flex" justify="center" :gutter="2">
@@ -71,7 +71,6 @@
 <script>
 // @ is an alias to /src
 import draggable from 'vuedraggable';
-import { formatArrToFormData } from '@/utils';
 
 export default {
   name: 'home',
@@ -106,7 +105,7 @@ export default {
     uploadImage() {
       const formData = new FormData();
       const fileList = this.fileList.map(item => item.file);
-      formatArrToFormData(formData, 'images', fileList);
+      this.$global.formatArrToFormData(formData, 'images', fileList);
     }
   }
 };
