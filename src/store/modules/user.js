@@ -82,9 +82,10 @@ export default {
             user_token: openIdRes.access_token
           }
           let loginRes = await $userApi.wxLogin(params)
-          await dispatch('setMenus')
           await router.replace({ path: '/' })
           commit(SET_TOKEN, loginRes.data.access_token)
+          await dispatch('setUserInfo')
+          await dispatch('setMenus')
           resolve()
         } catch (e) {
           reject(e)
@@ -122,6 +123,16 @@ export default {
           await store.dispatch('router/setRouters', res.data)
           commit(SET_MENUS, res.data)
           resolve()
+        } catch (e) {
+          reject(e)
+        }
+      })
+    },
+    setUserInfo({ state, commit, dispatch }, userInfo) {
+      return new Promise(async (resolve, reject) => {
+        try {
+          let res = await $userApi.getWxUserInfo({openid: state.openId})
+          commit(SET_USER_INFO, res.data.user)
         } catch (e) {
           reject(e)
         }

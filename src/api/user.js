@@ -54,3 +54,15 @@ export function getOpenId(params) {
     data: params
   })
 }
+
+/**
+ * 获取openId
+ * @params { openid }
+ * */
+export function getWxUserInfo(params) {
+  return request({
+    url: '/WeChatUser/Mine',
+    method: 'POST',
+    data: params
+  })
+}
