@@ -56,7 +56,7 @@ export function getOpenId(params) {
 }
 
 /**
- * 获取openId
+ * 获取对应微信用户信息
  * @params { openid }
  * */
 export function getWxUserInfo(params) {
