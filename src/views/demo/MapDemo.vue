@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import AMap from '@/components/AMap.vue';
+import AMap from '../../components/Tool/AMap.vue';
 export default {
   props: {},
   data() {

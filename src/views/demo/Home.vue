@@ -4,7 +4,6 @@
     <div>
       <img src="@/assets/logo.png" width="150" height="150" alt/>
     </div>
-    <p class="title">vue移动端H5快速开发架构</p>
     <van-row type="flex" justify="center">
       <van-image round width="20vw" height="20vw" src="https://img.yzcdn.cn/vant/cat.jpeg"/>
     </van-row>

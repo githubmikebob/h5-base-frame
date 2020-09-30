@@ -5,15 +5,17 @@
 </template>
 
 <script>
-// import inobounce from '@/utils/inobounce'
+import inobounce from './utils/inobounce'
+import { getUrlKey } from './utils/global'
+
 export default {
   beforeCreate() {
-    if (this.$global.getUrlKey('code')) this.$store.dispatch('user/wxLogin')
+    if (getUrlKey('code')) this.$store.dispatch('user/wxLogin')
   },
   created() {
   },
   mounted() {
-    // inobounce.enable();
+    inobounce.enable()
   }
 }
 </script>

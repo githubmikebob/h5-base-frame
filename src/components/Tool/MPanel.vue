@@ -1,7 +1,7 @@
 <!-- 面板 -->
 <template>
   <div class="m-panel-wrapper">
-    <div class="m-panel-title" v-if="isTitle">{{title}}</div>
+    <div class="m-panel-title" v-if="isTitle">{{ title }}</div>
     <div class="m-panel-content">
       <slot></slot>
     </div>
@@ -12,16 +12,12 @@
 export default {
   name: 'MPanel',
   props: {
-    /**
-   * 面板标题
-   */
+    // 面板标题
     title: {
       type: String,
       default: '面板标题'
     },
-    /**
-     * 是否显示标题
-     */
+    // 是否显示标题
     isTitle: {
       type: Boolean,
       default: true

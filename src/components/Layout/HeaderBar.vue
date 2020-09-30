@@ -1,6 +1,6 @@
 <template>
   <div class="layout-header-bar">
-    <van-nav-bar :title="title" left-text="返回" left-arrow @click-left="onClickLeft">
+    <van-nav-bar :title="this.$transform(`menu.${title}`)" left-text="返回" left-arrow @click-left="onClickLeft">
       <template #right>
         <slot name="right"></slot>
       </template>
@@ -13,18 +13,23 @@ import { NavBar } from 'vant';
 
 export default {
   name: 'header-bar',
+  components: {
+    [NavBar.name]: NavBar
+  },
   props: {
     title: {
       type: String,
-      default: '标题'
+      default: 'demo.title'
     }
   },
   data() {
     return {}
   },
   computed: {},
-  created() {},
-  mounted() {},
+  created() {
+  },
+  mounted() {
+  },
   watch: {},
   methods: {
     onClickLeft() {
@@ -35,9 +40,6 @@ export default {
       this.$toast('按钮');
     }
   },
-  components: {
-    [NavBar.name]: NavBar
-  }
 };
 </script>
 

@@ -12,7 +12,7 @@
 
 <script>
 // doc: https://panjiachen.github.io/vue-element-admin-site/feature/component/svg-icon.html#usage
-import { isExternal } from '@/utils/validate'
+import { isExternal } from '../../utils/verify'
 
 export default {
   name: 'SvgIcon',
@@ -27,9 +27,7 @@ export default {
     }
   },
   computed: {
-    /**
-			 * 是否是外部的资源 如 https://.....
-			 */
+    // 是否是外部的资源 如 https://.....
     isExternal() {
       return isExternal(this.iconClass)
     },

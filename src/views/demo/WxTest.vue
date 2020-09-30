@@ -7,16 +7,18 @@
 
 <script>
 import WxJsSDK from '@/utils/jssdk';
-import * as $wxApi from '@/api/wx';
+// import * as $wxApi from '@/api/wx';
+
 export default {
   props: {},
   data() {
     return {};
   },
   computed: {},
-  async created() {},
+  async created() {
+  },
   async mounted() {
-    let resultConfig = await $wxApi.getWxSdkConfig();
+    // let resultConfig = await $wxApi.getWxSdkConfig();
     WxJsSDK.config({
       debug: true,
       jsApiList: ['openLocation', 'chooseImage', 'getLocation'],

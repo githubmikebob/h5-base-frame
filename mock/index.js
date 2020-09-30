@@ -6,6 +6,6 @@ const files = require.context('./modules', false, /\.js$/)
 files.keys().forEach(key => {
   let file = files(key).default || files(key)
   file.forEach(item => {
-    MockJs.mock(process.env.VUE_APP_API_PREFIX + item.url, item.type, item.response)
+    MockJs.mock(process.env.VUE_APP_BASE_API + item.url, item.type, item.response)
   })
 })

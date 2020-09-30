@@ -1,7 +1,7 @@
 const page401 = () => import('@/views/demo/401.vue');
 const page404 = () => import('@/views/demo/404.vue');
 
-export default [
+const errorRouters = [
   {
     path: '/page401',
     name: 'page401',
@@ -28,3 +28,5 @@ export default [
     hidden: true
   },
 ]
+
+export default errorRouters

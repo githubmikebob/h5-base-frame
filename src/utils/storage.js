@@ -1,6 +1,5 @@
 // import message from './message'
-// import {GetAppid} from '../js/common'
-import { isObject } from './validate'
+import { isObject } from './verify'
 
 /**
  * 定时储存前端数据
@@ -37,7 +36,7 @@ export const GetLocal = (type, k) => {
     if (!data) return null
     else return data.val
   } catch (e) {
-    RemoveLocal(k)
+    RemoveLocal(type, k)
     return null
   }
 }
@@ -58,7 +57,7 @@ export const GetExp = (type, k) => {
     if (!data) return null
     return data.exp
   } catch (e) {
-    RemoveLocal(k)
+    RemoveLocal(type, k)
     return null
   }
 }
@@ -154,7 +153,6 @@ export const ResetSession = (k, i, nV) => {
   }
   SetSession(k, value)
 }
-
 
 export default {
   SetLocal,

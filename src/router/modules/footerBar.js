@@ -3,7 +3,7 @@ const Home = () => import('@/views/demo/Home.vue');
 const PersonCenter = () => import('@/views/demo/PersonCenter.vue');
 const MapDemo = () => import('@/views/demo/MapDemo.vue');
 
-export default [
+const footerBarRouters = [
   {
     path: 'home',
     name: 'home',
@@ -33,3 +33,5 @@ export default [
     component: PersonCenter,
   },
 ]
+
+export default footerBarRouters

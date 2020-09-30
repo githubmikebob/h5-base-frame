@@ -1,3 +1,3 @@
 module.exports = {
-  title: 'maybe' // 站点名称
+  title: '自助点餐系统' // 站点名称
 }

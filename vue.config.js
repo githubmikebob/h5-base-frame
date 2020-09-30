@@ -12,7 +12,7 @@ const configSite = require( "./config/index.js" );
 // CDN配置
 const cdnConfig = require( "./config/cdn.js" );
 
-let isProd = process.env.NODE_ENV == "production" ? true : false;
+let isProd = (process.env.NODE_ENV === "production" ) ? true : false;
 module.exports = {
 	lintOnSave: true, // eslint检测 按需开启
 	// 资源全局路径前缀
@@ -37,12 +37,9 @@ module.exports = {
 		// https: true,
 		// 设置代理
 		proxy: {
-			"/api": {
-				// 目标 API 地址
+			"/api": { // 目标 API 地址
 				// 开发环境
-				// target: "http://127.0.0.1:7001/api", // 后端测试api地址
-				// target: 'http://rap2.taobao.org:38080/app/mock/261254', // 记得删除这行
-				target: 'https://apitest.softkgj.com',
+				target: 'https://apiadmin.softkgj.com',
 				secure: false, // false为http访问，true为https访问
 				// 如果要代理 webSockets
 				ws: false,
@@ -66,7 +63,7 @@ module.exports = {
 				new WebpackCdnPlugin( cdnConfig ),
 			],
 		};
-		if( process.env.NODE_ENV === "production" ) {
+		if (process.env.NODE_ENV === "production") {
 			// 为生产环境修改配置...
 			console.log( "\n---生产环境---\n" );
 			console.log( `gzip压缩(需要nginx开启gzip)` );
@@ -104,12 +101,12 @@ module.exports = {
 		// 设置 svg-sprite-loader
 		config.module
 			.rule( "svg" )
-			.exclude.add( resolve( "src/icons" ) )
+			.exclude.add( resolve( "src/components/Icons" ) )
 			.end();
 		config.module
 			.rule( "icons" )
 			.test( /\.svg$/ )
-			.include.add( resolve( "src/icons" ) )
+			.include.add( resolve( "src/components/Icons" ) )
 			.end()
 			.use( "svg-sprite-loader" )
 			.loader( "svg-sprite-loader" )

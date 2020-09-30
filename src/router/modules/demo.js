@@ -10,7 +10,7 @@ export default [
     path: '/WxTest',
     name: 'WxTest',
     meta: {
-      title: '微信jssdk测试',
+      title: 'demo.WxTest',
       // hideHeader: true,
       // isOpen: true,
     },
@@ -20,7 +20,7 @@ export default [
     path: '/ListDemo',
     name: 'ListDemo',
     meta: {
-      title: '列表 demo',
+      title: 'demo.ListDemo',
       hideHeader: true,
       // isOpen: true,
     },

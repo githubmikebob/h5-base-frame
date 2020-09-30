@@ -7,29 +7,66 @@ import store from '@/store'
  */
 
 /**
- * 存储localStorage
+ * 数据深拷贝
+ * @param obj
+ * @returns {any}
  */
-export const setStore = (name, content) => {
-  if (!name) return
-  if (typeof content !== 'string') {
-    content = JSON.stringify(content)
+export const deepCopy = obj => {
+  return JSON.parse(JSON.stringify(obj))
+}
+
+// 混合对象
+export function extend() {
+  let length = arguments.length
+  let target = arguments[0] || {}
+  if (typeof target !== 'object' && typeof target !== 'function') {
+    target = {}
   }
-  window.localStorage.setItem(name, content)
+  let i = 1
+  if (length === 1) {
+    target = this
+    i--
+  }
+  for (i; i < length; i++) {
+    let source = arguments[i]
+    for (let key in source) {
+      // 使用for in会遍历数组所有的可枚举属性，包括原型。
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key]
+      }
+    }
+  }
+  return target
 }
+
 /**
- * 获取localStorage
+ * 获取地址栏url？后面参数的值
+ * @param {string} key
+ * @returns {string}
  */
-export const getStore = name => {
-  if (!name) return
-  return window.localStorage.getItem(name)
+export function getUrlKey(key) {
+  let z = decodeURIComponent((new RegExp('[?|&]' + key + '=([^&;]+?)(&|#|;|$)').exec(location.href) || [null, ''])[1].replace(/\+/g, '%20')) || null
+  // if (name === 'id' && z) SetLocal('', 'appid', z)
+  return z
 }
+
 /**
- * 删除localStorage
+ * 获取微信授权页面的code
+ * @param {string} appId
+ * @returns {string}
  */
-export const removeStore = name => {
-  if (!name) return
-  window.localStorage.removeItem(name)
+export function getWxCode(appId = store.state.user.appId) {
+  let code = getUrlKey('code')
+  if (!code) {
+    let state = 123
+    let redirectUrl = window.location.href
+    let Url = encodeURIComponent(redirectUrl)
+    window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appId}&redirect_uri=${Url}&response_type=code&scope=snsapi_userinfo&state=${state}#wechat_redirect`
+  } else {
+    return code
+  }
 }
+
 /**
  * 延迟加载方法
  * @param {*} fn
@@ -82,15 +119,6 @@ export const deepClone = obj => {
 }
 
 /**
- * 数据深拷贝
- * @param obj
- * @returns {any}
- */
-export const deepCopy = obj => {
-  return JSON.parse(JSON.stringify(obj))
-}
-
-/**
  * 函数节流
  * @param {*} fn
  * @param {*} interval
@@ -106,6 +134,7 @@ export const throttle = (fn, interval = 300) => {
     }, interval)
   }
 }
+
 /**
  * @desc  函数防抖---“立即执行版本” 和 “非立即执行版本” 的组合版本
  * @param  func 需要执行的函数
@@ -132,10 +161,11 @@ export const debounce = (func, wait, immediate) => {
     }
   }
 }
+
 /**
  * 数字转整数 如 100000 转为10万
- * @param {需要转化的数} num
- * @param {需要保留的小数位数} point
+ * @param { number } num 需要转化的数
+ * @param { number } point 需要保留的小数位数
  */
 export const tranNumber = (num, point) => {
   let numStr = num.toString()
@@ -154,10 +184,11 @@ export const tranNumber = (num, point) => {
     return parseFloat(parseInt(num / 10000) + '.' + decimal) + '万'
   }
 }
+
 /**
- * 数组插入到formdata
- * @description 该方法会改变原formdata
- * @param {FormData} formData 源formdata
+ * 数组插入到formData
+ * @description 该方法会改变原formData
+ * @param {FormData} formData 源formData
  * @param {string} key 数组key值
  * @param {Array} arr 数组
  */
@@ -167,32 +198,4 @@ export const formatArrToFormData = (formData, key, arr) => {
     // console.log(formData.get(`${key}[${index}]`));
   });
 };
-
-/**
- * 获取地址栏url？后面参数的值
- * @param {string} key
- * @returns {string}
- */
-export function getUrlKey(key) {
-  let z = decodeURIComponent((new RegExp('[?|&]' + key + '=([^&;]+?)(&|#|;|$)').exec(location.href) || [null, ''])[1].replace(/\+/g, '%20')) || null
-  // if (name === 'id' && z) SetLocal('', 'appid', z)
-  return z
-}
-
-/**
- * 获取微信授权页面的code
- * @param {string} appId
- * @returns {string}
- */
-export function getWxCode(appId = store.state.user.appId) {
-  let code = getUrlKey('code')
-  if (!code) {
-    let state = 123
-    let redirectUrl = window.location.href
-    let Url = encodeURIComponent(redirectUrl)
-    window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appId}&redirect_uri=${Url}&response_type=code&scope=snsapi_userinfo&state=${state}#wechat_redirect`
-  } else {
-    return code
-  }
-}
 

@@ -14,6 +14,10 @@ import { Tabbar, TabbarItem } from 'vant';
 
 export default {
   name: 'FooterTabbar',
+  components: {
+    [Tabbar.name]: Tabbar,
+    [TabbarItem.name]: TabbarItem
+  },
   data() {
     return {
       icon: {
@@ -22,9 +26,5 @@ export default {
       }
     };
   },
-  components: {
-    [Tabbar.name]: Tabbar,
-    [TabbarItem.name]: TabbarItem
-  }
 };
 </script>

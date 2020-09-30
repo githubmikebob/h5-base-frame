@@ -1,7 +1,7 @@
 // routes
 import footBarRouter from './footerBar';
 // layout
-import BottomBar from '@/components/Layout/BottomView.vue';
+import BottomBar from '../../components/Layout/BottomView.vue';
 // common
 const WxLogin = () => import('@/views/demo/WxLogin.vue');
 // ruleRouter
