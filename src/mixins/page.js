@@ -29,7 +29,7 @@ export default {
     /**
      * 初始化分页的数据
      * @param {number} size 自定义页码 默认 10
-     */
+     **/
     _initPageData(size = 10) {
       this.refreshing = false;
       this.loading = false;
@@ -57,16 +57,12 @@ export default {
         this.finished = true;
       }
     },
-    /**
-     * 上拉加载
-     */
+    // 上拉加载
     async _onLoad() {
       console.log('上拉加载');
       this._getListFactory();
     },
-    /**
-     * 下拉刷新
-     */
+    // 下拉刷新
     async _onRefresh() {
       console.log('下拉刷新');
       // 初始化数据

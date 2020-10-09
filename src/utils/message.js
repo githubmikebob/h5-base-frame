@@ -1,6 +1,6 @@
 import { Toast, Dialog, Notify } from 'vant'
-import router from '../router'
-import store from '../store'
+// import router from '../router'
+// import store from '../store'
 import transform from './transform'
 
 // 自定义错误返回数据

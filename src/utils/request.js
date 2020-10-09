@@ -19,7 +19,7 @@ const adminApi = axios.create({
 
 const asyncApi = axios.create({
   // withCredentials: true, // send cookies when cross-domain requests
-  baseURL: GetLocal(GetLocal('', 'appId'), 'api'), // .env中配置的api前缀
+  baseURL: GetLocal(GetLocal('', 'appId'), 'api'),
   timeout: 60000 // request timeout
 })
 
